@@ -16,6 +16,8 @@ class UIHangmanGame
     private:
 
         hangmanGame *game;
+
+        void getStartingInfo();
 };
 
 #endif // UIHANGMANGAME_H

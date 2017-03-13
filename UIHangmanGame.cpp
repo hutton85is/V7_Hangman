@@ -2,12 +2,27 @@
 
 UIHangmanGame::UIHangmanGame()
 {
-    game = new hangmanGame("Russell", 10);
+    getStartingInfo();
 }
 
 UIHangmanGame::~UIHangmanGame()
 {
-    //dtor
+}
+
+void UIHangmanGame::getStartingInfo(){
+
+    string word;
+    int maxGuesses;
+
+    cout << "Enter word to play in hangman: " << endl;
+    cin >> word;
+
+    cout << "Enter how many tries you want to have to guess the word" << endl;
+    cin >> maxGuesses;
+
+    game = new hangmanGame(word, maxGuesses);
+
+    play();
 }
 
 void UIHangmanGame::play(){

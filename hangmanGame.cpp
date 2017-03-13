@@ -70,12 +70,16 @@ bool hangmanGame::isItWon(){
 }
 
 void hangmanGame::wordToCharNode(){
+
     int wordLength = word.length();
     root = new CharNode(word[0]);
+    cout << " char is " << root->character << endl;
     NodePtr run = root;
+
     for (int i = 1; i < wordLength; i++){
         NodePtr new_node = new CharNode(word[i]);
         run->next = new_node;
+        cout << "node is now " << new_node->character << endl;
         run = new_node;
     }
 }

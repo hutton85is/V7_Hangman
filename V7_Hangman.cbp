@@ -32,10 +32,6 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="charNode.cpp" />
-		<Unit filename="charNode.h" />
-		<Unit filename="hangmanGame.cpp" />
-		<Unit filename="hangmanGame.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

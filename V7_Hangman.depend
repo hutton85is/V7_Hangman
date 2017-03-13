@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1489400224 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\charnode.cpp
+	"charNode.h"
+
+1489400224 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\charnode.h
+	<string>
+
+1489437223 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\hangmangame.cpp
+	"hangmanGame.h"
+
+1489437193 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\hangmangame.h
+	<iostream>
+	"charNode.h"
+
+1489437233 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\main.cpp
+	<iostream>
+	"hangmanGame.h"
+

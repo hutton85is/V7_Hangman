@@ -3,6 +3,8 @@
 
 #include "hangmanGame.h"
 
+using namespace std;
+
 class UIHangmanGame
 {
     public:

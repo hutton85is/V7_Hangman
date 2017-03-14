@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "charNode.h"
+#include <set>
 
 using namespace std;
 
@@ -44,6 +45,10 @@ private:
     int maxGuesses;
 
     void wordToCharNode();
+
+    void initializeWordDatabase();
+
+    set<string> wordDatabaseSet;
 
 };
 

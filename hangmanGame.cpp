@@ -1,13 +1,18 @@
 #include "hangmanGame.h"
 
-using namespace std;
-
 hangmanGame::hangmanGame(string word, int maxGuesses){
+
     lengthOfWord = word.length();
+
     guesses = 0;
+
     this->word = word;
+
     this->maxGuesses = maxGuesses;
+
     wordToCharNode();
+
+    initializeWordDatabase();
 }
 
 hangmanGame::~hangmanGame()
@@ -19,6 +24,9 @@ hangmanGame::~hangmanGame()
             delete d;
         }
     }
+}
+
+void hangmanGame::initializeWordDatabase(){
 }
 
 string hangmanGame::getWord() const{

@@ -1,18 +1,18 @@
 #include "hangmanGame.h"
 
-hangmanGame::hangmanGame(string word, int maxGuesses){
+hangmanGame::hangmanGame(int maxGuesses){
 
     lengthOfWord = word.length();
 
     guesses = 0;
 
-    this->word = word;
-
     this->maxGuesses = maxGuesses;
 
-    wordToCharNode();
-
     initializeWordDatabase();
+
+    findRandomWord();
+
+    wordToCharNode();
 }
 
 hangmanGame::~hangmanGame()
@@ -27,6 +27,31 @@ hangmanGame::~hangmanGame()
 }
 
 void hangmanGame::initializeWordDatabase(){
+
+    string line;
+    ifstream myfile ("WordDatabase.txt");
+
+    if (myfile.is_open()){
+
+        while (getline(myfile,line)){
+
+          wordDatabaseSet.insert(line);
+        }
+
+        myfile.close();
+    }
+}
+
+void hangmanGame::findRandomWord(){
+
+    srand (time(NULL));
+    int randomNumber = rand() % wordDatabaseSet.size() + 1;
+
+    it = wordDatabaseSet.begin();
+
+    for (int i = 0; i < randomNumber; i++, it++){
+        word = *it;
+    }
 }
 
 string hangmanGame::getWord() const{

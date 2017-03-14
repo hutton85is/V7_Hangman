@@ -4,6 +4,10 @@
 #include <iostream>
 #include "charNode.h"
 #include <set>
+#include <fstream>
+#include <stdlib.h>
+#include <time.h>
+#include <stdio.h>
 
 using namespace std;
 
@@ -12,7 +16,7 @@ class hangmanGame
 
 public:
 
-    hangmanGame(string word, int maxGuesses);
+    hangmanGame(int maxGuesses);
 
     virtual ~hangmanGame();
 
@@ -49,6 +53,10 @@ private:
     void initializeWordDatabase();
 
     set<string> wordDatabaseSet;
+
+    set<string>::iterator it;
+
+    void findRandomWord();
 
 };
 

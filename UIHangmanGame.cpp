@@ -30,19 +30,13 @@ void UIHangmanGame::displayCorrectGuesses(){
 
 void UIHangmanGame::getStartingInfo(){
 
-    string word;
-
     int maxGuesses;
-
-    cout << "Enter a word to play in hangman: " << endl;
-    cin >> word;
-    cout << endl;
 
     cout << "Enter how many tries you want to have to guess the word" << endl;
     cin >> maxGuesses;
     cout << endl;
 
-    game = new hangmanGame(word, maxGuesses);
+    game = new hangmanGame(maxGuesses);
 }
 
 char UIHangmanGame::getGuessedCharInput(){

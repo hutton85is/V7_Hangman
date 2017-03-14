@@ -7,8 +7,7 @@ UIHangmanGame::UIHangmanGame()
     play();
 }
 
-UIHangmanGame::~UIHangmanGame()
-{
+UIHangmanGame::~UIHangmanGame(){
     delete game;
 }
 

@@ -62,19 +62,7 @@ void UIHangmanGame::displayIfCorrect(char guess){
         }
 }
 
-void UIHangmanGame::play(){
-
-    char guess;
-
-    while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
-
-        displayCorrectGuesses();
-
-        guess = getGuessedCharInput();
-
-        displayIfCorrect(guess);
-    }
-
+void UIHangmanGame::displayWinnerOrLooser(){
     if (game->isItWon()){
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
@@ -85,5 +73,28 @@ void UIHangmanGame::play(){
         cout << "The word is: ";
         cout << game->getWord() << endl;
     }
+}
+
+void UIHangmanGame::displayGuessesLeft(){
+    int guessesLeft = game->getMaxGuesses() - game->getGuesses();
+    cout << "You have " << guessesLeft << " guesses left" << endl;
+}
+
+void UIHangmanGame::play(){
+
+    char guess;
+
+    while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
+
+        displayCorrectGuesses();
+
+        displayGuessesLeft();
+
+        guess = getGuessedCharInput();
+
+        displayIfCorrect(guess);
+    }
+
+    displayWinnerOrLooser();
 
 }

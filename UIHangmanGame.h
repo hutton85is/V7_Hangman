@@ -24,6 +24,10 @@ class UIHangmanGame
         char getGuessedCharInput();
 
         void displayIfCorrect(char guess);
+
+        void displayWinnerOrLooser();
+
+        void displayGuessesLeft();
 };
 
 #endif // UIHANGMANGAME_H

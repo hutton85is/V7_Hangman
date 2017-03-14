@@ -13,3 +13,6 @@ obj/*
 *.cbp
 *.depend
 *.layout
+
+bin/*
+obj/*

@@ -33,7 +33,7 @@ void UIHangmanGame::getStartingInfo(){
     string word;
     int maxGuesses;
 
-    cout << "Enter word to play in hangman: " << endl;
+    cout << "Enter a word to play in hangman: " << endl;
     cin >> word;
     cout << endl;
 

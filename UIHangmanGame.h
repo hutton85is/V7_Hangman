@@ -18,6 +18,8 @@ class UIHangmanGame
         hangmanGame *game;
 
         void getStartingInfo();
+
+        void displayCorrectGuesses();
 };
 
 #endif // UIHANGMANGAME_H

@@ -4,20 +4,20 @@
 1489442602 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\charnode.h
 	<string>
 
-1489443820 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\hangmangame.cpp
+1489449945 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\hangmangame.cpp
 	"hangmanGame.h"
 
-1489442592 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\hangmangame.h
+1489447233 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\hangmangame.h
 	<iostream>
 	"charNode.h"
 
-1489444693 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\main.cpp
+1489449278 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\main.cpp
 	<iostream>
 	"UIHangmanGame.h"
 
-1489444774 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\uihangmangame.cpp
+1489449976 source:c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\uihangmangame.cpp
 	"UIHangmanGame.h"
 
-1489444719 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\uihangmangame.h
+1489449018 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\uihangmangame.h
 	"hangmanGame.h"
 

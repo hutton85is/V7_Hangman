@@ -35,10 +35,10 @@
 			<Add option="-fexceptions" />
 		</Compiler>
 		<Unit filename="UIHangmanGame.cpp" />
+		<Unit filename="UIHangmanGame.h" />
 		<Unit filename="charNode.h" />
 		<Unit filename="hangmanGame.cpp" />
 		<Unit filename="hangmanGame.h" />
-		<Unit filename="include/UIHangmanGame.h" />
 		<Unit filename="main.cpp" />
 		<Extensions>
 			<code_completion />

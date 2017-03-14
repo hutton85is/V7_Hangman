@@ -19,7 +19,11 @@ public:
 
     string getWord() const;
 
+    int getGuesses() const;
+
     int getMaxGuesses() const;
+
+    NodePtr getRoot() const;
 
     bool checkGuess(char checkChar);
 

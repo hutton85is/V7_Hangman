@@ -3,10 +3,13 @@
 UIHangmanGame::UIHangmanGame()
 {
     getStartingInfo();
+
+    play();
 }
 
 UIHangmanGame::~UIHangmanGame()
 {
+    delete game;
 }
 
 void UIHangmanGame::displayCorrectGuesses(){
@@ -17,10 +20,9 @@ void UIHangmanGame::displayCorrectGuesses(){
 
         if (node->hit){
             append += node->character;
-            append += ' ';
         }
         else{
-            append += "_ ";
+            append += "-";
         }
     }
 
@@ -41,8 +43,23 @@ void UIHangmanGame::getStartingInfo(){
     cout << endl;
 
     game = new hangmanGame(word, maxGuesses);
+}
 
-    play();
+char UIHangmanGame::getGuessedCharInput(){
+    char guess;
+    cout << "Guess a character" << endl;
+    cin >> guess;
+    cout << endl;
+    return guess;
+}
+
+void UIHangmanGame::displayIfCorrect(char guess){
+    if (game->checkGuess(guess)){
+            cout << "Correct you got that one right" << endl;
+        }
+        else{
+            cout << "Sorry, not the correct character" << endl;
+        }
 }
 
 void UIHangmanGame::play(){
@@ -52,17 +69,10 @@ void UIHangmanGame::play(){
     while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
 
         displayCorrectGuesses();
-        cout << "Guess a character" << endl;
-        cin >> guess;
-        cout << endl;
 
-        if (game->checkGuess(guess)){
-            cout << "Correct you got that one right" << endl;
-        }
-        else{
-            cout << "Sorry, not the correct character" << endl;
-        }
+        guess = getGuessedCharInput();
 
+        displayIfCorrect(guess);
     }
 
     if (game->isItWon()){

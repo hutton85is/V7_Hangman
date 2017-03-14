@@ -42,6 +42,13 @@ void hangmanGame::initializeWordDatabase(){
     }
 }
 
+void hangmanGame::addWordToDatabase(string addWord){
+}
+
+void hangmanGame::removeWordFromDatabase(string rmWord){
+    wordDatabaseSet.erase(rmWord);
+}
+
 void hangmanGame::findRandomWord(){
 
     srand (time(NULL));

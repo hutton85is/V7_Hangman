@@ -11,6 +11,32 @@ UIHangmanGame::~UIHangmanGame(){
     delete game;
 }
 
+void UIHangmanGame::addOrRemoveWordInDatabase(){
+    //TODO
+    char choose = 'a';
+
+    while (choose == 'a' || choose == 'r'){
+
+        cout << "Push 'a' to add or 'r' to remove from database," << endl;
+        cout << "press any other key if you don't want to add or remove" << endl;
+        cin >> choose;
+
+        if (choose == 'a'){
+            string addWord;
+            cout << "Enter the word you would like to add: " << endl;
+            cin >> addWord;
+            game->addWordToDatabase(addWord);
+        }
+        else if (choose == 'r'){
+            string rmWord;
+            cout << "Enter the word you would like to remove: " << endl;
+            cin >> rmWord;
+            game->removeWordFromDatabase(rmWord);
+        }
+    }
+
+}
+
 void UIHangmanGame::displayCorrectGuesses(){
 
     string append = "";
@@ -106,6 +132,8 @@ void UIHangmanGame::play(){
 
     while (playAgain()){
 
+        addOrRemoveWordInDatabase();
+
         getStartingInfo();
 
         while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
@@ -123,4 +151,6 @@ void UIHangmanGame::play(){
 
         displayWinnerOrLooser();
     }
+
+    cout << "You played " << gamesPlayed << endl;
 }

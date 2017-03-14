@@ -36,6 +36,10 @@ public:
 
     int getGamesPlayed();
 
+    void addWordToDatabase(string addWord);
+
+    void removeWordFromDatabase(string rmWord);
+
 private:
 
     NodePtr root;

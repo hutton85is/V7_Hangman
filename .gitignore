@@ -4,5 +4,15 @@
 
 # Executables
 *.exe
+
+# Folders
+bin/*
+obj/*
+
+# Other files
+*.cbp
+*.depend
+*.layout
+
 bin/*
 obj/*

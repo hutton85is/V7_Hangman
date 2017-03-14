@@ -1,8 +1,8 @@
 #include "UIHangmanGame.h"
 
-UIHangmanGame::UIHangmanGame()
-{
-    getStartingInfo();
+UIHangmanGame::UIHangmanGame(){
+
+    gamesPlayed = 0;
 
     play();
 }
@@ -31,6 +31,7 @@ void UIHangmanGame::displayCorrectGuesses(){
 void UIHangmanGame::getStartingInfo(){
 
     string word;
+
     int maxGuesses;
 
     cout << "Enter a word to play in hangman: " << endl;
@@ -76,6 +77,8 @@ void UIHangmanGame::displayWinnerOrLooser(){
         cout << "The word is: ";
         cout << game->getWord() << endl;
     }
+
+    cout << endl << endl;
 }
 
 void UIHangmanGame::displayGuessesLeft(){
@@ -85,21 +88,45 @@ void UIHangmanGame::displayGuessesLeft(){
     cout << "You have " << guessesLeft << " guesses left" << endl;
 }
 
+bool UIHangmanGame::playAgain(){
+
+    string play;
+
+    if (gamesPlayed == 0){
+        return true;
+    }
+
+    cout << "Do you want to play again? hit 'no' or 'n' to quit and any key to play again" << endl;
+    cin >> play;
+
+    if (play == "n" || play == "N" || play == "No" || play == "no"){
+        return false;
+    }
+
+    return true;
+}
+
 void UIHangmanGame::play(){
 
     char guess;
 
-    while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
+    while (playAgain()){
 
-        displayCorrectGuesses();
+        getStartingInfo();
 
-        displayGuessesLeft();
+        while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
 
-        guess = getGuessedCharInput();
+            displayCorrectGuesses();
 
-        displayIfCorrect(guess);
+            displayGuessesLeft();
+
+            guess = getGuessedCharInput();
+
+            displayIfCorrect(guess);
+        }
+
+        gamesPlayed++;
+
+        displayWinnerOrLooser();
     }
-
-    displayWinnerOrLooser();
-
 }

@@ -29,6 +29,8 @@ public:
 
     bool isItFound(char checkChar);
 
+    int getGamesPlayed();
+
 private:
 
     NodePtr root;

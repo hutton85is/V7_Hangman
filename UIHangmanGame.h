@@ -28,6 +28,10 @@ class UIHangmanGame
         void displayWinnerOrLooser();
 
         void displayGuessesLeft();
+
+        bool playAgain();
+
+        int gamesPlayed;
 };
 
 #endif // UIHANGMANGAME_H

@@ -2,8 +2,7 @@
 
 using namespace std;
 
-hangmanGame::hangmanGame(string word, int maxGuesses)
-{
+hangmanGame::hangmanGame(string word, int maxGuesses){
     lengthOfWord = word.length();
     guesses = 0;
     this->word = word;
@@ -26,6 +25,15 @@ string hangmanGame::getWord() const{
     return word;
 }
 
+int hangmanGame::getGuesses() const{
+    return guesses;
+}
+
+NodePtr hangmanGame::getRoot() const{
+    NodePtr temp = root;
+    return temp;
+}
+
 int hangmanGame::getMaxGuesses() const{
     return maxGuesses;
 }
@@ -39,6 +47,10 @@ bool hangmanGame::checkGuess(char checkChar){
             someCharFound = true;
             checkNode->hit = true;
         }
+    }
+
+    if (!someCharFound){
+        guesses++;
     }
 
     return someCharFound;

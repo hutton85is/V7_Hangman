@@ -8,14 +8,15 @@ using namespace std;
 
 class CharNode
 {
+
 public:
 
-    CharNode();
-    CharNode(char character);
-    ~CharNode();
     char character;
-    CharNode *next;
     bool hit;
+    CharNode *next;
+
+    CharNode(char value, bool nohit = false, CharNode *nolink = NULL)
+        : character(value), hit(nohit), next(nolink){}
 
 };
 

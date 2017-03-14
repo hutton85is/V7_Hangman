@@ -21,3 +21,23 @@
 1489449018 c:\users\johnrussellhutton\documents\skóli\gagnaskipan\v7_hangman\uihangmangame.h
 	"hangmanGame.h"
 
+1489478908 source:c:\users\russell.tengi\documents\forritun\v7_hangman\hangmangame.cpp
+	"hangmanGame.h"
+
+1489478908 c:\users\russell.tengi\documents\forritun\v7_hangman\hangmangame.h
+	<iostream>
+	"charNode.h"
+
+1489478839 c:\users\russell.tengi\documents\forritun\v7_hangman\charnode.h
+	<string>
+
+1489478908 source:c:\users\russell.tengi\documents\forritun\v7_hangman\main.cpp
+	<iostream>
+	"UIHangmanGame.h"
+
+1489478908 c:\users\russell.tengi\documents\forritun\v7_hangman\uihangmangame.h
+	"hangmanGame.h"
+
+1489478908 source:c:\users\russell.tengi\documents\forritun\v7_hangman\uihangmangame.cpp
+	"UIHangmanGame.h"
+

@@ -87,25 +87,6 @@ void UIHangmanGame::displayGuessesLeft(){
     cout << "You have " << guessesLeft << " guesses left" << endl;
 }
 
-bool UIHangmanGame::playAgain(){
-
-    string play;
-
-    if (gamesPlayed == 0){
-        return true;
-    }
-
-    cout << endl << endl << endl;
-    cout << "Do you want to play again? hit 'no' or 'n' to quit and any key to play again" << endl;
-    cin >> play;
-
-    if (play == "n" || play == "N" || play == "No" || play == "no"){
-        return false;
-    }
-
-    return true;
-}
-
 char UIHangmanGame::displayPlayMenu(){
 
     char choose;

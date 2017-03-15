@@ -7,35 +7,45 @@ using namespace std;
 
 class UIHangmanGame
 {
-    public:
+public:
 
-        UIHangmanGame();
+    UIHangmanGame();
 
-        virtual ~UIHangmanGame();
+    virtual ~UIHangmanGame();
 
-        void play();
+    // Function to play game
+    void play();
 
-    private:
+private:
 
-        hangmanGame *game;
+    // Create an instance of the game hangman
+    hangmanGame *game;
 
-        void getMaxGuesses();
+    // Function that asks the user for the allowed max guesses
+    void getMaxGuesses();
 
-        void displayCorrectGuesses();
+    // Function to display correct guesses
+    // correct guess displays the correct character guessed
+    // wrong guess displays '-' symbol
+    void displayCorrectGuesses();
 
-        char getGuessedCharInput();
+    // Receive guess from user
+    char getGuessedCharInput();
 
-        void displayIfCorrect(char guess);
+    // Display if guess is correct or wrong
+    void displayIfCorrect(char guess);
 
-        void displayWinnerOrLooser();
+    // Display if game is won or lost
+    void displayWinnerOrLooser();
 
-        void displayGuessesLeft();
+    // Display how many guesses are left
+    void displayGuessesLeft();
 
-        bool playAgain();
+    // Variable that stores games played by player
+    int gamesPlayed;
 
-        int gamesPlayed;
-
-        char displayPlayMenu();
+    // Function to display game menu
+    char displayPlayMenu();
 };
 
 #endif // UIHANGMANGAME_H

@@ -54,7 +54,7 @@ void UIHangmanGame::displayCorrectGuesses(){
     cout << append << endl << endl;
 }
 
-void UIHangmanGame::getStartingInfo(){
+void UIHangmanGame::getMaxGuesses(){
 
     int maxGuesses;
 
@@ -62,7 +62,9 @@ void UIHangmanGame::getStartingInfo(){
     cin >> maxGuesses;
     cout << endl;
 
-    game = new hangmanGame(maxGuesses);
+    game = new hangmanGame();
+
+    game->setMaxGuesses(maxGuesses);
 }
 
 char UIHangmanGame::getGuessedCharInput(){
@@ -126,13 +128,24 @@ bool UIHangmanGame::playAgain(){
     return true;
 }
 
+void UIHangmanGame::displayPlayMenu(){
+
+    cout << "****************************" << endl;
+    cout << "*WELCOME TO THE BEST HANGMAN GAME EVER MADE*" << endl;
+    cout << "'p': Play a game of hangman" << endl;
+    cout << "'a': Add word to hangman" << endl;
+    cout << "'r': Remove word from hangman" << endl;
+    cout << "'q': Quit" << endl;
+    cout << "****************************" << endl;
+}
+
 void UIHangmanGame::play(){
 
     char guess;
 
     while (playAgain()){
 
-        getStartingInfo();
+        getMaxGuesses();
 
         while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
 

@@ -19,7 +19,7 @@ class UIHangmanGame
 
         hangmanGame *game;
 
-        void getStartingInfo();
+        void getMaxGuesses();
 
         void displayCorrectGuesses();
 
@@ -36,6 +36,8 @@ class UIHangmanGame
         int gamesPlayed;
 
         void addOrRemoveWordInDatabase();
+
+        void displayPlayMenu();
 };
 
 #endif // UIHANGMANGAME_H

@@ -1,12 +1,10 @@
 #include "hangmanGame.h"
 
-hangmanGame::hangmanGame(int maxGuesses){
+hangmanGame::hangmanGame(){
 
     lengthOfWord = word.length();
 
     guesses = 0;
-
-    this->maxGuesses = maxGuesses;
 
     initializeWordDatabase();
 
@@ -86,6 +84,10 @@ NodePtr hangmanGame::getRoot() const{
 
 int hangmanGame::getMaxGuesses() const{
     return maxGuesses;
+}
+
+void hangmanGame::setMaxGuesses(int maxGuesses) {
+    this->maxGuesses = maxGuesses;
 }
 
 bool hangmanGame::checkGuess(char checkChar){

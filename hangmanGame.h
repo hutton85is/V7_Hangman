@@ -16,7 +16,7 @@ class hangmanGame
 
 public:
 
-    hangmanGame(int maxGuesses);
+    hangmanGame();
 
     virtual ~hangmanGame();
 
@@ -39,6 +39,8 @@ public:
     void addWordToDatabase(string addWord);
 
     void removeWordFromDatabase(string rmWord);
+
+    void setMaxGuesses(int maxGuesses);
 
 private:
 

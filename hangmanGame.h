@@ -42,6 +42,8 @@ public:
 
     void setMaxGuesses(int maxGuesses);
 
+    void newGame();
+
 private:
 
     NodePtr root;

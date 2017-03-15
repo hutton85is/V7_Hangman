@@ -46,6 +46,9 @@ private:
 
     // Function to display game menu
     char displayPlayMenu();
+
+    // Display games played
+    void displayGamesPlayed();
 };
 
 #endif // UIHANGMANGAME_H

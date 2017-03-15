@@ -4,6 +4,8 @@ UIHangmanGame::UIHangmanGame(){
 
     gamesPlayed = 0;
 
+    game = new hangmanGame();
+
     play();
 }
 
@@ -85,6 +87,10 @@ void UIHangmanGame::displayWinnerOrLooser(){
     cout << endl << endl;
 }
 
+void UIHangmanGame::displayGamesPlayed(){
+    cout << gamesPlayed << " games played" << endl;
+}
+
 void UIHangmanGame::displayGuessesLeft(){
 
     int guessesLeft = game->getMaxGuesses() - game->getGuesses();
@@ -115,7 +121,7 @@ void UIHangmanGame::play(){
     // Loop until variable 'choose' gets the value 'q' then break from the value
     while (true){
 
-        game = new hangmanGame();
+        game->newGame();
 
         choose = displayPlayMenu();
 
@@ -161,5 +167,5 @@ void UIHangmanGame::play(){
         }
     }
 
-    cout << "You played " << gamesPlayed << " games" << endl;
+    displayGamesPlayed();
 }

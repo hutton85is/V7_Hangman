@@ -2,15 +2,9 @@
 
 hangmanGame::hangmanGame(){
 
-    lengthOfWord = word.length();
-
-    guesses = 0;
-
     initializeWordDatabase();
 
-    findRandomWord();
-
-    wordToCharNode();
+    newGame();
 }
 
 hangmanGame::~hangmanGame()
@@ -27,11 +21,28 @@ hangmanGame::~hangmanGame()
     }
 }
 
+void hangmanGame::newGame(){
+
+    lengthOfWord = word.length();
+
+    guesses = 0;
+
+    findRandomWord();
+
+    wordToCharNode();
+}
+
 void hangmanGame::loadToWordDatabase(){
 
+    ofstream myfile;
+    myfile.open ("WordDatabase.txt");
+
     for (it = wordDatabaseSet.begin(); it != wordDatabaseSet.end(); it++){
-        cout << *it << endl;
+        myfile << *it;
+        myfile << '\n';
     }
+
+    myfile.close();
 }
 
 void hangmanGame::initializeWordDatabase(){
@@ -42,7 +53,6 @@ void hangmanGame::initializeWordDatabase(){
     if (myfile.is_open()){
 
         while (getline(myfile,line)){
-
           wordDatabaseSet.insert(line);
         }
 
@@ -124,14 +134,12 @@ bool hangmanGame::isItFound(char checkChar){
 
 bool hangmanGame::isItWon(){
 
-    bool gameWon = true;
-
     for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
         if (checkNode->hit != true){
-            gameWon = false;
+            return false;
         }
     }
-    return gameWon;
+    return true;
 }
 
 void hangmanGame::wordToCharNode(){

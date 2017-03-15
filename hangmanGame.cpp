@@ -17,12 +17,21 @@ hangmanGame::hangmanGame(int maxGuesses){
 
 hangmanGame::~hangmanGame()
 {
+    loadToWordDatabase();
+
     if (root){
         while (root){
             NodePtr d = root;
             root = root->next;
             delete d;
         }
+    }
+}
+
+void hangmanGame::loadToWordDatabase(){
+
+    for (it = wordDatabaseSet.begin(); it != wordDatabaseSet.end(); it++){
+        cout << *it << endl;
     }
 }
 
@@ -43,6 +52,7 @@ void hangmanGame::initializeWordDatabase(){
 }
 
 void hangmanGame::addWordToDatabase(string addWord){
+    wordDatabaseSet.insert(addWord);
 }
 
 void hangmanGame::removeWordFromDatabase(string rmWord){

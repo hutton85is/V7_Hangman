@@ -132,8 +132,6 @@ void UIHangmanGame::play(){
 
     while (playAgain()){
 
-        addOrRemoveWordInDatabase();
-
         getStartingInfo();
 
         while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
@@ -150,6 +148,8 @@ void UIHangmanGame::play(){
         gamesPlayed++;
 
         displayWinnerOrLooser();
+
+        addOrRemoveWordInDatabase();
     }
 
     cout << "You played " << gamesPlayed << endl;

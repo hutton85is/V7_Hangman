@@ -62,6 +62,8 @@ private:
 
     void findRandomWord();
 
+    void loadToWordDatabase();
+
 };
 
 #endif // TTTGAME_H

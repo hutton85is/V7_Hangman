@@ -29,26 +29,29 @@ void UIHangmanGame::displayCorrectGuesses(){
         }
     }
 
-    cout << append << endl << endl;
+    cout << "  " << append << endl << endl;
 }
 
 void UIHangmanGame::getMaxGuesses(){
 
     int maxGuesses;
 
-    cout << "Enter how many tries you want to have to guess the word" << endl;
+    cout << "Enter how many tries you want to have to guess the word:" << endl;
     cin >> maxGuesses;
     cout << endl;
 
     // set maxguesses in game
     game->setMaxGuesses(maxGuesses);
+
+    cout << endl;
+    cout << endl << endl;
 }
 
 char UIHangmanGame::getGuessedCharInput(){
 
     char guess;
 
-    cout << "Guess a character" << endl;
+    cout << "Guess a character:" << endl << endl;
     cin >> guess;
     cout << endl;
 
@@ -59,11 +62,11 @@ void UIHangmanGame::displayIfCorrect(char guess){
 
     // if guess is correct/wrong display the appropriate message
     if (game->checkGuess(guess)){
-        cout << "Correct you got that one right" << endl;
+        cout << "Correct you got that one right" << endl << endl << endl;
     }
 
     else{
-        cout << "Sorry, not the correct character" << endl;
+        cout << "Sorry, not the correct character" << endl << endl << endl;
     }
 }
 
@@ -74,7 +77,7 @@ void UIHangmanGame::displayWinnerOrLooser(){
 
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
-        cout << game->getWord() << endl;
+        cout << game->getWord() << endl << endl << endl;
     }
 
     else{
@@ -110,6 +113,7 @@ char UIHangmanGame::displayPlayMenu(){
     cout << "  'q': Quit" << endl << endl;
     cout << "  ************************************************" << endl;
     cin >> choose;
+    cout << endl << endl;
 
     return choose;
 }
@@ -149,6 +153,7 @@ void UIHangmanGame::play(){
             cout << "Enter the word you would like to add: " << endl;
             cin >> addWord;
             game->addWordToDatabase(addWord);
+            cout << endl << endl;
         }
 
         else if (choose == 'r'){
@@ -157,6 +162,7 @@ void UIHangmanGame::play(){
             cout << "Enter the word you would like to remove: " << endl;
             cin >> rmWord;
             game->removeWordFromDatabase(rmWord);
+            cout << endl << endl;
         }
 
         else if (choose == 'q'){

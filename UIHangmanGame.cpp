@@ -15,6 +15,8 @@ void UIHangmanGame::displayCorrectGuesses(){
 
     string append = "";
 
+    // Append to string all characters that are guessed correctly
+    // all strings not guessed correctly are appended as '-'
     for (NodePtr node = game->getRoot(); node != NULL; node = node->next){
 
         if (node->hit){
@@ -36,6 +38,7 @@ void UIHangmanGame::getMaxGuesses(){
     cin >> maxGuesses;
     cout << endl;
 
+    // set maxguesses in game
     game->setMaxGuesses(maxGuesses);
 }
 
@@ -52,6 +55,7 @@ char UIHangmanGame::getGuessedCharInput(){
 
 void UIHangmanGame::displayIfCorrect(char guess){
 
+    // if guess is correct/wrong display the appropriate message
     if (game->checkGuess(guess)){
         cout << "Correct you got that one right" << endl;
     }
@@ -63,6 +67,7 @@ void UIHangmanGame::displayIfCorrect(char guess){
 
 void UIHangmanGame::displayWinnerOrLooser(){
 
+    // if game is won/lost display the appropriate message
     if (game->isItWon()){
 
         cout << "Congratz you got it" << endl;
@@ -105,10 +110,9 @@ char UIHangmanGame::displayPlayMenu(){
 
 void UIHangmanGame::play(){
 
-    char guess;
-
     char choose;
 
+    // Loop until variable 'choose' gets the value 'q' then break from the value
     while (true){
 
         game = new hangmanGame();
@@ -125,9 +129,7 @@ void UIHangmanGame::play(){
 
                 displayGuessesLeft();
 
-                guess = getGuessedCharInput();
-
-                displayIfCorrect(guess);
+                displayIfCorrect(getGuessedCharInput());
             }
 
             gamesPlayed++;
@@ -159,5 +161,5 @@ void UIHangmanGame::play(){
         }
     }
 
-    cout << "You played " << gamesPlayed << endl;
+    cout << "You played " << gamesPlayed << " games" << endl;
 }

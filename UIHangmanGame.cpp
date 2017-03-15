@@ -2,7 +2,9 @@
 
 UIHangmanGame::UIHangmanGame(){
 
-    gamesPlayed = 0;
+    won = 0;
+
+    lost = 0;
 
     game = new hangmanGame();
 
@@ -51,22 +53,26 @@ char UIHangmanGame::getGuessedCharInput(){
 
     char guess;
 
-    cout << "Guess a character:" << endl << endl;
+    cout << "Guess a character: ";
     cin >> guess;
-    cout << endl;
+    cout << endl << endl;
 
     return guess;
+}
+
+void UIHangmanGame::displayLengthOfWord(){
+    cout << "Length of word: " << game->getWord().length() << endl;
 }
 
 void UIHangmanGame::displayIfCorrect(char guess){
 
     // if guess is correct/wrong display the appropriate message
     if (game->checkGuess(guess)){
-        cout << "Correct you got that one right" << endl << endl << endl;
+        cout << "Correct you got that one right" << endl << endl;
     }
 
     else{
-        cout << "Sorry, not the correct character" << endl << endl << endl;
+        cout << "Sorry, not the correct character" << endl << endl;
     }
 }
 
@@ -75,30 +81,35 @@ void UIHangmanGame::displayWinnerOrLooser(){
     // if game is won/lost display the appropriate message
     if (game->isItWon()){
 
+        won++;
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
-        cout << game->getWord() << endl << endl << endl;
+        cout << game->getWord() << endl << endl;
     }
 
     else{
 
+        lost++;
         cout << "Sorry, LOOSER" << endl;
         cout << "The word is: ";
-        cout << game->getWord() << endl;
+        cout << game->getWord() << endl << endl;
     }
-
-    cout << endl << endl;
 }
 
-void UIHangmanGame::displayGamesPlayed(){
-    cout << gamesPlayed << " games played" << endl;
+void UIHangmanGame::displayGamesStatus(){
+
+    cout << "games played: " << won + lost << endl;
+
+    cout << "games won: " << won << endl;
+
+    cout << "games lost: " << lost << endl << endl << endl;
 }
 
 void UIHangmanGame::displayGuessesLeft(){
 
     int guessesLeft = game->getMaxGuesses() - game->getGuesses();
 
-    cout << "You have " << guessesLeft << " guesses left" << endl;
+    cout << "Guesses left: " << guessesLeft << endl;
 }
 
 char UIHangmanGame::displayPlayMenu(){
@@ -111,7 +122,9 @@ char UIHangmanGame::displayPlayMenu(){
     cout << "  'a': Add word to hangman" << endl;
     cout << "  'r': Remove word from hangman" << endl;
     cout << "  'q': Quit" << endl << endl;
-    cout << "  ************************************************" << endl;
+    cout << "  ************************************************" << endl << endl;
+
+    cout << "What do you want to do: ";
     cin >> choose;
     cout << endl << endl;
 
@@ -137,14 +150,16 @@ void UIHangmanGame::play(){
 
                 displayCorrectGuesses();
 
+                displayLengthOfWord();
+
                 displayGuessesLeft();
 
                 displayIfCorrect(getGuessedCharInput());
             }
 
-            gamesPlayed++;
-
             displayWinnerOrLooser();
+
+            displayGamesStatus();
         }
 
         else if (choose == 'a'){
@@ -172,6 +187,4 @@ void UIHangmanGame::play(){
             choose = displayPlayMenu();
         }
     }
-
-    displayGamesPlayed();
 }

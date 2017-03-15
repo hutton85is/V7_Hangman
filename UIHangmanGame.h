@@ -41,14 +41,20 @@ private:
     // Display how many guesses are left
     void displayGuessesLeft();
 
-    // Variable that stores games played by player
-    int gamesPlayed;
-
     // Function to display game menu
     char displayPlayMenu();
 
+    // Variable to store games won
+    int won;
+
+    // Variable to store games lost
+    int lost;
+
     // Display games played
-    void displayGamesPlayed();
+    void displayGamesStatus();
+
+    // display length of word to guess
+    void displayLengthOfWord();
 };
 
 #endif // UIHANGMANGAME_H

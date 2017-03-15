@@ -41,9 +41,6 @@ public:
     // check if a character is already found(guessed)
     bool isItFound(char checkChar);
 
-    // get number of games played in a set
-    int getGamesPlayed();
-
     // add word to database set
     void addWordToDatabase(string addWord);
 

@@ -35,9 +35,7 @@ class UIHangmanGame
 
         int gamesPlayed;
 
-        void addOrRemoveWordInDatabase();
-
-        void displayPlayMenu();
+        char displayPlayMenu();
 };
 
 #endif // UIHANGMANGAME_H

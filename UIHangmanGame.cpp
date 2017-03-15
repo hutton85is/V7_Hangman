@@ -8,33 +8,6 @@ UIHangmanGame::UIHangmanGame(){
 }
 
 UIHangmanGame::~UIHangmanGame(){
-    delete game;
-}
-
-void UIHangmanGame::addOrRemoveWordInDatabase(){
-    //TODO
-    char choose = 'a';
-
-    while (choose == 'a' || choose == 'r'){
-
-        cout << "Push 'a' to add or 'r' to remove from database," << endl;
-        cout << "press any other key if you don't want to add or remove" << endl;
-        cin >> choose;
-
-        if (choose == 'a'){
-            string addWord;
-            cout << "Enter the word you would like to add: " << endl;
-            cin >> addWord;
-            game->addWordToDatabase(addWord);
-        }
-        else if (choose == 'r'){
-            string rmWord;
-            cout << "Enter the word you would like to remove: " << endl;
-            cin >> rmWord;
-            game->removeWordFromDatabase(rmWord);
-        }
-    }
-
 }
 
 void UIHangmanGame::displayCorrectGuesses(){
@@ -61,8 +34,6 @@ void UIHangmanGame::getMaxGuesses(){
     cout << "Enter how many tries you want to have to guess the word" << endl;
     cin >> maxGuesses;
     cout << endl;
-
-    game = new hangmanGame();
 
     game->setMaxGuesses(maxGuesses);
 }
@@ -128,41 +99,76 @@ bool UIHangmanGame::playAgain(){
     return true;
 }
 
-void UIHangmanGame::displayPlayMenu(){
+char UIHangmanGame::displayPlayMenu(){
 
-    cout << "****************************" << endl;
-    cout << "*WELCOME TO THE BEST HANGMAN GAME EVER MADE*" << endl;
-    cout << "'p': Play a game of hangman" << endl;
-    cout << "'a': Add word to hangman" << endl;
-    cout << "'r': Remove word from hangman" << endl;
-    cout << "'q': Quit" << endl;
-    cout << "****************************" << endl;
+    char choose;
+
+    cout << "  ************************************************" << endl;
+    cout << "   WELCOME TO THE BEST HANGMAN GAME EVER MADE  " << endl << endl;
+    cout << "  'p': Play a game of hangman" << endl;
+    cout << "  'a': Add word to hangman" << endl;
+    cout << "  'r': Remove word from hangman" << endl;
+    cout << "  'q': Quit" << endl << endl;
+    cout << "  ************************************************" << endl;
+    cin >> choose;
+
+    return choose;
 }
 
 void UIHangmanGame::play(){
 
     char guess;
 
-    while (playAgain()){
+    char choose;
 
-        getMaxGuesses();
+    while (true){
 
-        while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
+        game = new hangmanGame();
 
-            displayCorrectGuesses();
+        choose = displayPlayMenu();
 
-            displayGuessesLeft();
+        if (choose == 'p'){
 
-            guess = getGuessedCharInput();
+            getMaxGuesses();
 
-            displayIfCorrect(guess);
+            while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
+
+                displayCorrectGuesses();
+
+                displayGuessesLeft();
+
+                guess = getGuessedCharInput();
+
+                displayIfCorrect(guess);
+            }
+
+            gamesPlayed++;
+
+            displayWinnerOrLooser();
         }
 
-        gamesPlayed++;
+        else if (choose == 'a'){
 
-        displayWinnerOrLooser();
+            string addWord;
+            cout << "Enter the word you would like to add: " << endl;
+            cin >> addWord;
+            game->addWordToDatabase(addWord);
+        }
 
-        addOrRemoveWordInDatabase();
+        else if (choose == 'r'){
+
+            string rmWord;
+            cout << "Enter the word you would like to remove: " << endl;
+            cin >> rmWord;
+            game->removeWordFromDatabase(rmWord);
+        }
+
+        else if (choose == 'q'){
+            break;
+        }
+        else{
+            choose = displayPlayMenu();
+        }
     }
 
     cout << "You played " << gamesPlayed << endl;

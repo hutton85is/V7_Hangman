@@ -64,6 +64,8 @@ private:
     // word being used in hangman
     string word;
 
+    // games lost
+
     // length of word being used in hangman
     int lengthOfWord;
 

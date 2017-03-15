@@ -15,6 +15,7 @@ hangmanGame::hangmanGame(){
 
 hangmanGame::~hangmanGame()
 {
+
     loadToWordDatabase();
 
     if (root){

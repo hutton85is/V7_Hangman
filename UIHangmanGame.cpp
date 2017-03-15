@@ -8,6 +8,7 @@ UIHangmanGame::UIHangmanGame(){
 }
 
 UIHangmanGame::~UIHangmanGame(){
+    game->~hangmanGame();
 }
 
 void UIHangmanGame::displayCorrectGuesses(){
@@ -39,10 +40,13 @@ void UIHangmanGame::getMaxGuesses(){
 }
 
 char UIHangmanGame::getGuessedCharInput(){
+
     char guess;
+
     cout << "Guess a character" << endl;
     cin >> guess;
     cout << endl;
+
     return guess;
 }
 
@@ -60,12 +64,14 @@ void UIHangmanGame::displayIfCorrect(char guess){
 void UIHangmanGame::displayWinnerOrLooser(){
 
     if (game->isItWon()){
+
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
         cout << game->getWord() << endl;
     }
 
     else{
+
         cout << "Sorry, LOOSER" << endl;
         cout << "The word is: ";
         cout << game->getWord() << endl;
@@ -89,6 +95,7 @@ bool UIHangmanGame::playAgain(){
         return true;
     }
 
+    cout << endl << endl << endl;
     cout << "Do you want to play again? hit 'no' or 'n' to quit and any key to play again" << endl;
     cin >> play;
 

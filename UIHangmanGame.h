@@ -44,12 +44,6 @@ private:
     // Function to display game menu
     void displayPlayMenu();
 
-    // Variable to store games won
-    int won;
-
-    // Variable to store games lost
-    int lost;
-
     // Display games played
     void displayGamesStatus();
 

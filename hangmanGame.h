@@ -53,6 +53,15 @@ public:
     // initialize variables for a new game
     void newGame();
 
+    // get games played this session
+    int getPlayed() const;
+
+    // get games won this session
+    int getWon() const;
+
+    // get games lost this session
+    int getLost() const;
+
 private:
 
     // node that points to the first element in a link of CharNode
@@ -61,7 +70,14 @@ private:
     // word being used in hangman
     string word;
 
-    // games lost
+    // games lost during session
+    int lost;
+
+    // games won during session
+    int won;
+
+    // games played during session
+    int played;
 
     // length of word being used in hangman
     int lengthOfWord;

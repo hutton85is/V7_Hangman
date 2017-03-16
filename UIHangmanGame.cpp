@@ -2,10 +2,6 @@
 
 UIHangmanGame::UIHangmanGame(){
 
-    won = 0;
-
-    lost = 0;
-
     game = new hangmanGame();
 
     displayPlayMenu();
@@ -95,7 +91,6 @@ void UIHangmanGame::displayWinnerOrLooser(){
     // if game is won/lost display the appropriate message
     if (game->isItWon()){
 
-        won++;
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
         cout << game->getWord() << endl;
@@ -103,7 +98,6 @@ void UIHangmanGame::displayWinnerOrLooser(){
 
     else{
 
-        lost++;
         cout << "Sorry, LOOSER" << endl;
         cout << "The word is: ";
         cout << game->getWord() << endl;
@@ -112,11 +106,11 @@ void UIHangmanGame::displayWinnerOrLooser(){
 
 void UIHangmanGame::displayGamesStatus(){
 
-    cout << "games played: " << won + lost << endl;
+    cout << "games played: " << game->getPlayed() << endl;
 
-    cout << "games won: " << won << endl;
+    cout << "games won: " << game->getWon() << endl;
 
-    cout << "games lost: " << lost << endl << endl << endl;
+    cout << "games lost: " << game->getLost() << endl << endl << endl;
 }
 
 void UIHangmanGame::displayGuessesLeft(){

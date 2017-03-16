@@ -2,6 +2,14 @@
 
 hangmanGame::hangmanGame(){
 
+    lost = 0;
+
+    won = 0;
+
+    played = 0;
+
+    word = "";
+
     initializeWordDatabase();
 }
 
@@ -10,7 +18,7 @@ hangmanGame::~hangmanGame()
 
     loadToWordDatabase();
 
-    if (root){
+    if (word != ""){
         while (root){
             NodePtr d = root;
             root = root->next;
@@ -20,6 +28,8 @@ hangmanGame::~hangmanGame()
 }
 
 void hangmanGame::newGame(){
+
+    played++;
 
     lengthOfWord = word.length();
 
@@ -83,6 +93,18 @@ void hangmanGame::findRandomWord(){
     }
 }
 
+int hangmanGame::getPlayed() const{
+    return played;
+}
+
+int hangmanGame::getWon() const{
+    return won;
+}
+
+int hangmanGame::getLost() const{
+    return lost;
+}
+
 string hangmanGame::getWord() const{
     return word;
 }
@@ -139,6 +161,13 @@ bool hangmanGame::isItFound(char checkChar){
 }
 
 bool hangmanGame::isItWon(){
+
+    // Check if guesses made have reached the maximum limit
+    // we do this to increase status of lost games and so we
+    // dont have to iterate through the word if game is lost
+    if (guesses == maxGuesses){
+        return false;
+    }
 
     // run through a list of characters in word and check if any are not guessed
     for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){

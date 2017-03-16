@@ -117,6 +117,11 @@ void UIHangmanGame::displayIfCorrect(string guess){
 
 void UIHangmanGame::displayWinnerOrLooser(){
 
+    // I dont want to be able to get less than -10 points for a game
+    if (points < -10){
+        points = -10;
+    }
+
     totalPoints = totalPoints + points;
 
     // if game is won/lost display the appropriate message

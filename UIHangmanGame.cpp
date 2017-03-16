@@ -12,7 +12,7 @@ UIHangmanGame::UIHangmanGame(){
 
     game = new hangmanGame();
 
-    play();
+    displayPlayMenu();
 }
 
 UIHangmanGame::~UIHangmanGame(){
@@ -162,7 +162,7 @@ void UIHangmanGame::displayGuessesLeft(){
     cout << "Guesses left: " << guessesLeft << endl;
 }
 
-char UIHangmanGame::displayPlayMenu(){
+void UIHangmanGame::displayPlayMenu(){
 
     char choose;
 
@@ -178,65 +178,67 @@ char UIHangmanGame::displayPlayMenu(){
     cin >> choose;
     cout << endl << endl;
 
-    return choose;
+    gotoAction(choose);
+}
+
+void UIHangmanGame::gotoAction(char choose){
+
+    if (choose == 'p'){
+        play();
+    }
+
+    else if (choose == 'a'){
+
+        addWord();
+    }
+
+    else if (choose == 'r'){
+
+        removeWord();
+    }
+
+    else if (choose == 'q'){
+        return;
+    }
+
+    displayPlayMenu();
+}
+
+void UIHangmanGame::addWord(){
+
+    string addWord;
+    cout << "Enter the word you would like to add: " << endl;
+    cin >> addWord;
+    game->addWordToDatabase(addWord);
+    cout << endl << endl;
+}
+
+void UIHangmanGame::removeWord(){
+    string rmWord;
+    cout << "Enter the word you would like to remove: " << endl;
+    cin >> rmWord;
+    game->removeWordFromDatabase(rmWord);
+    cout << endl << endl;
 }
 
 void UIHangmanGame::play(){
 
-    char choose;
+    game->newGame();
 
-    // Loop until variable 'choose' gets the value 'q' then break from the value
-    while (true){
+    getMaxGuesses();
 
-        game->newGame();
+    while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
 
-        choose = displayPlayMenu();
+        displayCorrectGuesses();
 
-        if (choose == 'p'){
+        displayLengthOfWord();
 
-            getMaxGuesses();
+        displayGuessesLeft();
 
-            while (!game->isItWon() && game->getGuesses() != game->getMaxGuesses()){
-
-                displayCorrectGuesses();
-
-                displayLengthOfWord();
-
-                displayGuessesLeft();
-
-                displayIfCorrect(getGuessedCharInput());
-            }
-
-            displayWinnerOrLooser();
-
-            displayGamesStatus();
-        }
-
-        else if (choose == 'a'){
-
-            string addWord;
-            cout << "Enter the word you would like to add: " << endl;
-            cin >> addWord;
-            game->addWordToDatabase(addWord);
-            cout << endl << endl;
-        }
-
-        else if (choose == 'r'){
-
-            string rmWord;
-            cout << "Enter the word you would like to remove: " << endl;
-            cin >> rmWord;
-            game->removeWordFromDatabase(rmWord);
-            cout << endl << endl;
-        }
-
-        else if (choose == 'q'){
-            cout << "Thank you for playing hangman" << endl << endl;
-            cout << "Total points you got during this session: " << totalPoints << endl;
-            break;
-        }
-        else{
-            choose = displayPlayMenu();
-        }
+        displayIfCorrect(getGuessedCharInput());
     }
+
+    displayWinnerOrLooser();
+
+    displayGamesStatus();
 }

@@ -13,9 +13,6 @@ public:
 
     virtual ~UIHangmanGame();
 
-    // Function to play game
-    void play();
-
 private:
 
     // Create an instance of the game hangman
@@ -28,6 +25,9 @@ private:
     // correct guess displays the correct character guessed
     // wrong guess displays '-' symbol
     void displayCorrectGuesses();
+
+    // Function to play game
+    void play();
 
     // Receive guess from user
     string getGuessedCharInput();
@@ -42,7 +42,7 @@ private:
     void displayGuessesLeft();
 
     // Function to display game menu
-    char displayPlayMenu();
+    void displayPlayMenu();
 
     // Variable to store games won
     int won;
@@ -67,6 +67,15 @@ private:
 
     // Increase points if the correct word is guessed
     void increasePoints(int inc);
+
+    // Function to act on players choice of action
+    void gotoAction(char choose);
+
+    // Add word to database
+    void addWord();
+
+    // Remove word from database
+    void removeWord();
 };
 
 #endif // UIHANGMANGAME_H

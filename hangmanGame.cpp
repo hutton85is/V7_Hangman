@@ -4,7 +4,7 @@ hangmanGame::hangmanGame(){
 
     initializeWordDatabase();
 
-    newGame();
+    //newGame();
 }
 
 hangmanGame::~hangmanGame()

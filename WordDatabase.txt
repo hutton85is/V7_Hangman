@@ -1,13 +1,4 @@
 apple
 ass
-book
-glacier
-guest
-helicopter
-looser
-programming
-quit
-room
-russia
+sky
 table
-tree

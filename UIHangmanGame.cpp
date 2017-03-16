@@ -6,6 +6,10 @@ UIHangmanGame::UIHangmanGame(){
 
     lost = 0;
 
+    totalPoints = 0;
+
+    points = 0;
+
     game = new hangmanGame();
 
     play();
@@ -34,7 +38,18 @@ void UIHangmanGame::displayCorrectGuesses(){
     cout << "  " << append << endl << endl;
 }
 
+void UIHangmanGame::decreasePoints(int dec){
+    points = points - dec;
+}
+
+void UIHangmanGame::increasePoints(int inc){
+    points = points + inc;
+}
+
 void UIHangmanGame::getMaxGuesses(){
+
+    // Initialize points in the beginning of game
+    points = 50;
 
     int maxGuesses;
 
@@ -49,9 +64,9 @@ void UIHangmanGame::getMaxGuesses(){
     cout << endl << endl;
 }
 
-char UIHangmanGame::getGuessedCharInput(){
+string UIHangmanGame::getGuessedCharInput(){
 
-    char guess;
+    string guess;
 
     cout << "Guess a character: ";
     cin >> guess;
@@ -64,19 +79,45 @@ void UIHangmanGame::displayLengthOfWord(){
     cout << "Length of word: " << game->getWord().length() << endl;
 }
 
-void UIHangmanGame::displayIfCorrect(char guess){
+void UIHangmanGame::displayIfCorrect(string guess){
+
+    // if variable guess is longer than 1 we have a guess for the hole word
+    if (1 < guess.length()){
+
+        // when a correct guess is made iterate through the word to make it guessed
+        if (guess == game->getWord()){
+
+            for (size_t i = 0; i < guess.length(); i++){
+                game->checkGuess(guess[i]);
+            }
+
+            // when a correct guess for the hole word is made give extra 10 points,
+            // but only if no more than two guesses have been made
+            if (game->getGuesses() < 3){
+                points = points + 10;
+            }
+        }
+        else{
+            points = points - 10;
+        }
+
+        return;
+    }
 
     // if guess is correct/wrong display the appropriate message
-    if (game->checkGuess(guess)){
+    if (game->checkGuess(guess[0])){
         cout << "Correct you got that one right" << endl << endl;
     }
 
     else{
+        points = points - 5;
         cout << "Sorry, not the correct character" << endl << endl;
     }
 }
 
 void UIHangmanGame::displayWinnerOrLooser(){
+
+    totalPoints = totalPoints + points;
 
     // if game is won/lost display the appropriate message
     if (game->isItWon()){
@@ -84,7 +125,9 @@ void UIHangmanGame::displayWinnerOrLooser(){
         won++;
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
-        cout << game->getWord() << endl << endl;
+        cout << game->getWord() << endl;
+        cout << "Points for this game: " << points << endl;
+        cout << "Total points this session: " << totalPoints << endl << endl;
     }
 
     else{
@@ -92,7 +135,9 @@ void UIHangmanGame::displayWinnerOrLooser(){
         lost++;
         cout << "Sorry, LOOSER" << endl;
         cout << "The word is: ";
-        cout << game->getWord() << endl << endl;
+        cout << game->getWord() << endl;
+        cout << "Points for this game: " << points << endl;
+        cout << "Total points this session: " << totalPoints << endl << endl;
     }
 }
 
@@ -181,6 +226,8 @@ void UIHangmanGame::play(){
         }
 
         else if (choose == 'q'){
+            cout << "Thank you for playing hangman" << endl << endl;
+            cout << "Total points you got during this session: " << totalPoints << endl;
             break;
         }
         else{

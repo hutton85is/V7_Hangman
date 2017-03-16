@@ -30,10 +30,10 @@ private:
     void displayCorrectGuesses();
 
     // Receive guess from user
-    char getGuessedCharInput();
+    string getGuessedCharInput();
 
     // Display if guess is correct or wrong
-    void displayIfCorrect(char guess);
+    void displayIfCorrect(string guess);
 
     // Display if game is won or lost
     void displayWinnerOrLooser();
@@ -55,6 +55,18 @@ private:
 
     // display length of word to guess
     void displayLengthOfWord();
+
+    // Total points of games played this session
+    int totalPoints;
+
+    // Points during a single game
+    int points;
+
+    // Decrease points during gameplay
+    void decreasePoints(int dec);
+
+    // Increase points if the correct word is guessed
+    void increasePoints(int inc);
 };
 
 #endif // UIHANGMANGAME_H

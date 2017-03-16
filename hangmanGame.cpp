@@ -70,9 +70,7 @@ void hangmanGame::removeWordFromDatabase(string rmWord){
     wordDatabaseSet.erase(rmWord);
 }
 
-/*
-Find a random word from a set of words
-*/
+// Find a random word from a set of words
 void hangmanGame::findRandomWord(){
 
     // Figure a random number based on the time and the size of the set 'wordDataBaseSet'

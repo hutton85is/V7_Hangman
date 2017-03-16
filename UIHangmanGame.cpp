@@ -71,6 +71,8 @@ void UIHangmanGame::displayIfCorrect(string guess){
             for (size_t i = 0; i < guess.length(); i++){
                 game->checkGuess(guess[i]);
             }
+
+            cout << "Congratz you guessed the hole word in one word" << endl;
         }
 
         return;

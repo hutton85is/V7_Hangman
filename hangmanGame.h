@@ -50,7 +50,7 @@ public:
     // function to set the private variable storing maximum available guesses
     void setMaxGuesses(int maxGuesses);
 
-    // initialize variables for a new game
+    // initialize variables for a new game, this function is only called when starting a new game
     void newGame();
 
     // get games played this session
@@ -105,6 +105,10 @@ private:
 
     // function that pushes the wordDatabaseSet back to a text file
     void loadToWordDatabase();
+
+    // variable to tell if we already have checked for a winner/looser at the end of a game
+    // this is done since if we call isItWinner() function twice we add another win/loss
+    bool alreadyCheckedWinnerLooser;
 
 };
 

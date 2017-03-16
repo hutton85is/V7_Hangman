@@ -38,6 +38,8 @@ void hangmanGame::newGame(){
     findRandomWord();
 
     wordToCharNode();
+
+    alreadyCheckedWinnerLooser = false;
 }
 
 void hangmanGame::loadToWordDatabase(){
@@ -166,12 +168,27 @@ bool hangmanGame::isItWon(){
     // we do this to increase status of lost games and so we
     // dont have to iterate through the word if game is lost
     if (guesses == maxGuesses){
+
+        if (!alreadyCheckedWinnerLooser){
+
+            alreadyCheckedWinnerLooser = true;
+            won++;
+        }
+
         return false;
     }
 
     // run through a list of characters in word and check if any are not guessed
     for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
+
         if (checkNode->hit != true){
+
+            if (!alreadyCheckedWinnerLooser){
+
+                alreadyCheckedWinnerLooser = true;
+                lost++;
+            }
+
             return false;
         }
     }

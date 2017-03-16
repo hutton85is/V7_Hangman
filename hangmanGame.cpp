@@ -3,8 +3,6 @@
 hangmanGame::hangmanGame(){
 
     initializeWordDatabase();
-
-    //newGame();
 }
 
 hangmanGame::~hangmanGame()

@@ -56,18 +56,6 @@ private:
     // display length of word to guess
     void displayLengthOfWord();
 
-    // Total points of games played this session
-    int totalPoints;
-
-    // Points during a single game
-    int points;
-
-    // Decrease points during gameplay
-    void decreasePoints(int dec);
-
-    // Increase points if the correct word is guessed
-    void increasePoints(int inc);
-
     // Function to act on players choice of action
     void gotoAction(char choose);
 

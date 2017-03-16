@@ -6,10 +6,6 @@ UIHangmanGame::UIHangmanGame(){
 
     lost = 0;
 
-    totalPoints = 0;
-
-    points = 0;
-
     game = new hangmanGame();
 
     displayPlayMenu();
@@ -38,18 +34,7 @@ void UIHangmanGame::displayCorrectGuesses(){
     cout << "  " << append << endl << endl;
 }
 
-void UIHangmanGame::decreasePoints(int dec){
-    points = points - dec;
-}
-
-void UIHangmanGame::increasePoints(int inc){
-    points = points + inc;
-}
-
 void UIHangmanGame::getMaxGuesses(){
-
-    // Initialize points in the beginning of game
-    points = 50;
 
     int maxGuesses;
 
@@ -90,15 +75,6 @@ void UIHangmanGame::displayIfCorrect(string guess){
             for (size_t i = 0; i < guess.length(); i++){
                 game->checkGuess(guess[i]);
             }
-
-            // when a correct guess for the hole word is made give extra 10 points,
-            // but only if no more than two guesses have been made
-            if (game->getGuesses() < 3){
-                points = points + 10;
-            }
-        }
-        else{
-            points = points - 10;
         }
 
         return;
@@ -110,19 +86,11 @@ void UIHangmanGame::displayIfCorrect(string guess){
     }
 
     else{
-        points = points - 5;
         cout << "Sorry, not the correct character" << endl << endl;
     }
 }
 
 void UIHangmanGame::displayWinnerOrLooser(){
-
-    // I dont want to be able to get less than -10 points for a game
-    if (points < -10){
-        points = -10;
-    }
-
-    totalPoints = totalPoints + points;
 
     // if game is won/lost display the appropriate message
     if (game->isItWon()){
@@ -131,8 +99,6 @@ void UIHangmanGame::displayWinnerOrLooser(){
         cout << "Congratz you got it" << endl;
         cout << "The word is: ";
         cout << game->getWord() << endl;
-        cout << "Points for this game: " << points << endl;
-        cout << "Total points this session: " << totalPoints << endl << endl;
     }
 
     else{
@@ -141,8 +107,6 @@ void UIHangmanGame::displayWinnerOrLooser(){
         cout << "Sorry, LOOSER" << endl;
         cout << "The word is: ";
         cout << game->getWord() << endl;
-        cout << "Points for this game: " << points << endl;
-        cout << "Total points this session: " << totalPoints << endl << endl;
     }
 }
 

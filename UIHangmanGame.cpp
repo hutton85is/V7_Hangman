@@ -8,6 +8,7 @@ UIHangmanGame::UIHangmanGame(){
 }
 
 UIHangmanGame::~UIHangmanGame(){
+
     game->~hangmanGame();
 }
 
@@ -20,9 +21,11 @@ void UIHangmanGame::displayCorrectGuesses(){
     for (NodePtr node = game->getRoot(); node != NULL; node = node->next){
 
         if (node->hit){
+
             append += node->character;
         }
         else{
+
             append += "-";
         }
     }
@@ -57,6 +60,7 @@ string UIHangmanGame::getGuessedCharInput(){
 }
 
 void UIHangmanGame::displayLengthOfWord(){
+
     cout << "Length of word: " << game->getWord().length() << endl;
 }
 
@@ -69,6 +73,7 @@ void UIHangmanGame::displayIfCorrect(string guess){
         if (guess == game->getWord()){
 
             for (size_t i = 0; i < guess.length(); i++){
+
                 game->checkGuess(guess[i]);
             }
 
@@ -80,10 +85,12 @@ void UIHangmanGame::displayIfCorrect(string guess){
 
     // if guess is correct/wrong display the appropriate message
     if (game->checkGuess(guess[0])){
+
         cout << "Correct you got that one right" << endl << endl;
     }
 
     else{
+
         cout << "Sorry, not the correct character" << endl << endl;
     }
 }
@@ -142,6 +149,7 @@ void UIHangmanGame::displayPlayMenu(){
 
     cout << "What do you want to do: ";
     cin >> choose;
+
     cout << endl << endl;
 
     gotoAction(choose);
@@ -173,17 +181,24 @@ void UIHangmanGame::gotoAction(char choose){
 void UIHangmanGame::addWord(){
 
     string addWord;
+
     cout << "Enter the word you would like to add: ";
     cin >> addWord;
+
     game->addWordToDatabase(addWord);
+
     cout << endl << endl;
 }
 
 void UIHangmanGame::removeWord(){
+
     string rmWord;
+
     cout << "Enter the word you would like to remove: ";
     cin >> rmWord;
+
     game->removeWordFromDatabase(rmWord);
+
     cout << endl << endl;
 }
 

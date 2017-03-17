@@ -21,7 +21,9 @@ hangmanGame::~hangmanGame()
     loadToWordDatabase();
 
     if (word != ""){
+
         while (root){
+
             NodePtr d = root;
             root = root->next;
             delete d;
@@ -54,6 +56,7 @@ void hangmanGame::loadToWordDatabase(){
 
     // iterate from a set into myfile to store words for hangman
     for (it = wordDatabaseSet.begin(); it != wordDatabaseSet.end(); it++){
+
         myfile << *it;
         myfile << '\n';
     }
@@ -70,6 +73,7 @@ void hangmanGame::initializeWordDatabase(){
 
         // get all lines in myfile and insert to a set
         while (getline(myfile,line)){
+
           wordDatabaseSet.insert(line);
         }
 
@@ -78,10 +82,12 @@ void hangmanGame::initializeWordDatabase(){
 }
 
 void hangmanGame::addWordToDatabase(string addWord){
+
     wordDatabaseSet.insert(addWord);
 }
 
 void hangmanGame::removeWordFromDatabase(string rmWord){
+
     wordDatabaseSet.erase(rmWord);
 }
 
@@ -93,8 +99,11 @@ double points are given, then decrease points by 5*guesses made
 void hangmanGame::calculatePoints(){
 
     if (guesses == 0){
+
         points = points * 2;
+
         calculateTotalPoints();
+
         return;
     }
 
@@ -102,6 +111,7 @@ void hangmanGame::calculatePoints(){
 
     // set points as zero if they go negative
     if (points < 0){
+
         points = 0;
     }
 
@@ -109,6 +119,7 @@ void hangmanGame::calculatePoints(){
 }
 
 void hangmanGame::calculateTotalPoints(){
+
     totalPoints = totalPoints + points;
 }
 
@@ -123,48 +134,60 @@ void hangmanGame::findRandomWord(){
     it = wordDatabaseSet.begin();
 
     for (int i = 0; i < randomNumber; i++, it++){
+
         word = *it;
     }
 }
 
 int hangmanGame::getPoints() const{
+
     return points;
 }
 
 int hangmanGame::getTotalPoints() const{
+
     return totalPoints;
 }
 
 int hangmanGame::getPlayed() const{
+
     return played;
 }
 
 int hangmanGame::getWon() const{
+
     return won;
 }
 
 int hangmanGame::getLost() const{
+
     return lost;
 }
 
 string hangmanGame::getWord() const{
+
     return word;
 }
 
 int hangmanGame::getGuesses() const{
+
     return guesses;
 }
 
 NodePtr hangmanGame::getRoot() const{
+
     NodePtr temp = root;
+
     return temp;
 }
 
 int hangmanGame::getMaxGuesses() const{
+
     return maxGuesses;
 }
 
 void hangmanGame::setMaxGuesses(int maxGuesses) {
+
     this->maxGuesses = maxGuesses;
 }
 
@@ -174,7 +197,9 @@ bool hangmanGame::checkGuess(char checkChar){
 
     // run through the list of characters in the word and check if its there
     for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
+
         if (checkChar == checkNode->character){
+
             someCharFound = true;
             checkNode->hit = true;
         }
@@ -182,6 +207,7 @@ bool hangmanGame::checkGuess(char checkChar){
 
     // if character guessed is not a member of the word, increase guesses counter
     if (!someCharFound){
+
         guesses++;
     }
 
@@ -194,7 +220,9 @@ bool hangmanGame::isItFound(char checkChar){
 
     // run through a list of characters to check if its been found
     for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
+
         if (checkChar == checkNode->character){
+
             someCharFound = true;
         }
     }
@@ -210,11 +238,13 @@ bool hangmanGame::isItWon(){
     if (guesses == maxGuesses){
 
         if (!alreadyCheckedWinnerLooser){
+
             points = 0;
             lost++;
         }
 
         alreadyCheckedWinnerLooser = true;
+
         return false;
     }
 
@@ -228,6 +258,7 @@ bool hangmanGame::isItWon(){
     }
 
     if (!alreadyCheckedWinnerLooser){
+
             won++;
             calculatePoints();
         }
@@ -246,6 +277,7 @@ void hangmanGame::wordToCharNode(){
 
     // create a list of characters from the global variable 'word'
     for (int i = 1; i < wordLength; i++){
+
         NodePtr new_node = new CharNode(word[i]);
         run->next = new_node;
         run = new_node;

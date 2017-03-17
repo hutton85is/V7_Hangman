@@ -94,7 +94,7 @@ void hangmanGame::calculatePoints(){
 
     if (guesses == 0){
         points = points * 2;
-        totalPoints = totalPoints + points;
+        calculateTotalPoints();
         return;
     }
 
@@ -105,6 +105,10 @@ void hangmanGame::calculatePoints(){
         points = 0;
     }
 
+    calculateTotalPoints();
+}
+
+void hangmanGame::calculateTotalPoints(){
     totalPoints = totalPoints + points;
 }
 

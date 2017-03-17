@@ -126,6 +126,9 @@ private:
     //Calculate points when a game is won
     void calculatePoints();
 
+    // Calculate total points during session
+    void calculateTotalPoints();
+
 };
 
 #endif // TTTGAME_H

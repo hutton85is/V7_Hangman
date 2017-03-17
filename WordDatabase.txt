@@ -1,0 +1,6 @@
+apple
+board
+green
+table
+telephone
+weather

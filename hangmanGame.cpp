@@ -23,18 +23,6 @@ hangmanGame::~hangmanGame()
 
     if (word != ""){
 
-<<<<<<< HEAD
-       removeCharList(root);
-    }
-}
-
-void hangmanGame::removeCharList(NodePtr node){
-
-    if (node){
-        NodePtr temp = node;
-        removeCharList(node->next);
-        delete temp;
-=======
        removeNodes(root);
     }
 }
@@ -46,7 +34,6 @@ void hangmanGame::removeNodes(NodePtr node){
         node = node->next;
         delete temp;
         removeNodes(node);
->>>>>>> de42dfc97b7cbab27129d2ac07224762674b23e6
     }
 }
 
@@ -270,22 +257,6 @@ bool hangmanGame::checkGuess(string checkChar){
     if (!someCharFound){
 
         guesses++;
-    }
-
-    return someCharFound;
-}
-
-bool hangmanGame::isItFound(char checkChar){
-
-    bool someCharFound = false;
-
-    // run through a list of characters to check if its been found
-    for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
-
-        if (checkChar == checkNode->character){
-
-            someCharFound = true;
-        }
     }
 
     return someCharFound;

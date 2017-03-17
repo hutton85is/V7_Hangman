@@ -23,12 +23,16 @@ hangmanGame::~hangmanGame()
 
     if (word != ""){
 
-        while (root){
+       removeCharList(root);
+    }
+}
 
-            NodePtr d = root;
-            root = root->next;
-            delete d;
-        }
+void hangmanGame::removeCharList(NodePtr node){
+
+    if (node){
+        NodePtr temp = node;
+        removeCharList(node->next);
+        delete temp;
     }
 }
 

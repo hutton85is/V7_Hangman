@@ -213,18 +213,33 @@ void hangmanGame::setMaxGuesses(int maxGuesses) {
     this->maxGuesses = maxGuesses;
 }
 
-bool hangmanGame::checkGuess(char checkChar){
+bool hangmanGame::checkGuess(string checkChar){
 
     bool someCharFound = false;
 
-    // run through the list of characters in the word and check if its there
-    for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
+    // if guess is the same as the word to guess check all characters in linked list
+    if (checkChar == word){
 
-        if (checkChar == checkNode->character){
-
-            someCharFound = true;
+        for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
             checkNode->hit = true;
         }
+        someCharFound = true;
+
+    }
+
+    // if the guess is a single character check if word contains it
+    else if (checkChar.length() == 1){
+
+        // run through the list of characters in the word and check if its there
+        for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
+
+            if (checkChar[0] == checkNode->character){
+
+                someCharFound = true;
+                checkNode->hit = true;
+            }
+        }
+
     }
 
     // if character guessed is not a member of the word, increase guesses counter

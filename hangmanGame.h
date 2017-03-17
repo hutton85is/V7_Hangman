@@ -37,7 +37,7 @@ public:
     NodePtr getRoot() const;
 
     // function to verify if guess is correct
-    bool checkGuess(char checkChar);
+    bool checkGuess(string checkChar);
 
     // check if a character is already found(guessed)
     bool isItFound(char checkChar);

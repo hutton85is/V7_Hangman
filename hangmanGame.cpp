@@ -221,10 +221,16 @@ bool hangmanGame::checkGuess(string checkChar){
     if (checkChar == word){
 
         for (NodePtr checkNode = root; checkNode != NULL; checkNode = checkNode->next){
+
             checkNode->hit = true;
         }
+
         someCharFound = true;
 
+        // get some extra points if guesses made are in the range of {1,2,3}
+        if (0 < guesses && guesses < 4){
+            points = points + 50;
+        }
     }
 
     // if the guess is a single character check if word contains it

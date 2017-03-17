@@ -70,6 +70,7 @@ void UIHangmanGame::displayIfCorrect(string guess){
 
         cout << "congratz you got that one right" << endl;
     }
+
     else{
 
         cout << "sorry not correct" << endl;

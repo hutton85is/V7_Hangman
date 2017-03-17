@@ -1,1 +1,6 @@
 airplane
+paper
+green
+brown
+scissors
+jeans

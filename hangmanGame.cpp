@@ -2,6 +2,8 @@
 
 hangmanGame::hangmanGame(){
 
+    totalPoints = 0;
+
     lost = 0;
 
     won = 0;
@@ -30,6 +32,8 @@ hangmanGame::~hangmanGame()
 void hangmanGame::newGame(){
 
     played++;
+
+    points = 0;
 
     lengthOfWord = word.length();
 
@@ -80,6 +84,18 @@ void hangmanGame::removeWordFromDatabase(string rmWord){
     wordDatabaseSet.erase(rmWord);
 }
 
+int hangmanGame::calculatePoints(){
+
+    if (guesses == 0){
+        points = 100;
+        return points;
+    }
+
+    points = floor(100/(5*guesses));
+
+    return points;
+}
+
 // Find a random word from a set of words
 void hangmanGame::findRandomWord(){
 
@@ -93,6 +109,14 @@ void hangmanGame::findRandomWord(){
     for (int i = 0; i < randomNumber; i++, it++){
         word = *it;
     }
+}
+
+int hangmanGame::getPoints() const{
+    return points;
+}
+
+int hangmanGame::getTotalPoints() const{
+    return totalPoints;
 }
 
 int hangmanGame::getPlayed() const{
@@ -172,7 +196,7 @@ bool hangmanGame::isItWon(){
         if (!alreadyCheckedWinnerLooser){
 
             alreadyCheckedWinnerLooser = true;
-            won++;
+            lost++;
         }
 
         return false;
@@ -186,7 +210,7 @@ bool hangmanGame::isItWon(){
             if (!alreadyCheckedWinnerLooser){
 
                 alreadyCheckedWinnerLooser = true;
-                lost++;
+                won++;
             }
 
             return false;

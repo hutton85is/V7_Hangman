@@ -8,6 +8,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <stdio.h>
+#include <math.h>
 
 using namespace std;
 
@@ -62,6 +63,15 @@ public:
     // get games lost this session
     int getLost() const;
 
+    // get function for the score this game
+    int getPoints() const;
+
+    // get function for total score this session
+    int getTotalPoints() const;
+
+    // calculate points at the end of each game
+    int calculatePoints();
+
 private:
 
     // node that points to the first element in a link of CharNode
@@ -78,6 +88,12 @@ private:
 
     // games played during session
     int played;
+
+    // points for this game
+    int points;
+
+    // points for this session
+    int totalPoints;
 
     // length of word being used in hangman
     int lengthOfWord;

@@ -33,7 +33,8 @@ void hangmanGame::newGame(){
 
     played++;
 
-    points = 0;
+    // set initial points
+    points = 100;
 
     lengthOfWord = word.length();
 
@@ -84,16 +85,27 @@ void hangmanGame::removeWordFromDatabase(string rmWord){
     wordDatabaseSet.erase(rmWord);
 }
 
-int hangmanGame::calculatePoints(){
+
+/*
+Calculate only when a game is won. If a hole word is guessed in first try
+double points are given, then decrease points by 5*guesses made
+*/
+void hangmanGame::calculatePoints(){
 
     if (guesses == 0){
-        points = 100;
-        return points;
+        points = points * 2;
+        totalPoints = totalPoints + points;
+        return;
     }
 
-    points = floor(100/(5*guesses));
+    points = points - (5 * guesses);
 
-    return points;
+    // set points as zero if they go negative
+    if (points < 0){
+        points = 0;
+    }
+
+    totalPoints = totalPoints + points;
 }
 
 // Find a random word from a set of words
@@ -194,6 +206,7 @@ bool hangmanGame::isItWon(){
     if (guesses == maxGuesses){
 
         if (!alreadyCheckedWinnerLooser){
+            points = 0;
             lost++;
         }
 
@@ -212,6 +225,7 @@ bool hangmanGame::isItWon(){
 
     if (!alreadyCheckedWinnerLooser){
             won++;
+            calculatePoints();
         }
 
     alreadyCheckedWinnerLooser = true;

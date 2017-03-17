@@ -58,6 +58,9 @@ private:
 
     // Remove word from database
     void removeWord();
+
+    // display game points
+    void displayGamePoints();
 };
 
 #endif // UIHANGMANGAME_H

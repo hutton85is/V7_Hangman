@@ -94,16 +94,15 @@ void UIHangmanGame::displayWinnerOrLooser(){
     if (game->isItWon()){
 
         cout << "Congratz you got it" << endl;
-        cout << "The word is: ";
-        cout << game->getWord() << endl;
     }
 
     else{
 
         cout << "Sorry, LOOSER" << endl;
-        cout << "The word is: ";
-        cout << game->getWord() << endl;
     }
+
+    cout << "The word is: ";
+    cout << game->getWord() << endl;
 }
 
 void UIHangmanGame::displayGamesStatus(){
@@ -120,6 +119,13 @@ void UIHangmanGame::displayGuessesLeft(){
     int guessesLeft = game->getMaxGuesses() - game->getGuesses();
 
     cout << "Guesses left: " << guessesLeft << endl;
+}
+
+void UIHangmanGame::displayGamePoints(){
+
+    cout << "points for this game: " << game->getPoints() << endl;
+
+    cout << "points for this session: " << game->getTotalPoints() << endl;
 }
 
 void UIHangmanGame::displayPlayMenu(){
@@ -202,5 +208,5 @@ void UIHangmanGame::play(){
 
     displayGamesStatus();
 
-    cout << "points for this game: " << game->getPoints() << endl;
+    displayGamePoints();
 }

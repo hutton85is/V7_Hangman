@@ -123,8 +123,8 @@ private:
     // this is done since if we call isItWinner() function twice we add another win/loss
     bool alreadyCheckedWinnerLooser;
 
-    // calculate points at the end of each game
-    int calculatePoints();
+    //Calculate points when a game is won
+    void calculatePoints();
 
 };
 

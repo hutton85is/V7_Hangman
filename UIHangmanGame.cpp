@@ -202,5 +202,5 @@ void UIHangmanGame::play(){
 
     displayGamesStatus();
 
-    cout << "points for this game: " << game->calculatePoints() << endl;
+    cout << "points for this game: " << game->getPoints() << endl;
 }

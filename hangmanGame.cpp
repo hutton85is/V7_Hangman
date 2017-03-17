@@ -194,11 +194,10 @@ bool hangmanGame::isItWon(){
     if (guesses == maxGuesses){
 
         if (!alreadyCheckedWinnerLooser){
-
-            alreadyCheckedWinnerLooser = true;
             lost++;
         }
 
+        alreadyCheckedWinnerLooser = true;
         return false;
     }
 
@@ -207,15 +206,15 @@ bool hangmanGame::isItWon(){
 
         if (checkNode->hit != true){
 
-            if (!alreadyCheckedWinnerLooser){
-
-                alreadyCheckedWinnerLooser = true;
-                won++;
-            }
-
             return false;
         }
     }
+
+    if (!alreadyCheckedWinnerLooser){
+            won++;
+        }
+
+    alreadyCheckedWinnerLooser = true;
 
     // If all characters have been found, return true
     return true;

@@ -69,9 +69,6 @@ public:
     // get function for total score this session
     int getTotalPoints() const;
 
-    // calculate points at the end of each game
-    int calculatePoints();
-
 private:
 
     // node that points to the first element in a link of CharNode
@@ -125,6 +122,9 @@ private:
     // variable to tell if we already have checked for a winner/looser at the end of a game
     // this is done since if we call isItWinner() function twice we add another win/loss
     bool alreadyCheckedWinnerLooser;
+
+    // calculate points at the end of each game
+    int calculatePoints();
 
 };
 

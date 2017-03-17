@@ -9,7 +9,7 @@ UIHangmanGame::UIHangmanGame(){
 
 UIHangmanGame::~UIHangmanGame(){
 
-    game->~hangmanGame();
+    delete game;
 }
 
 void UIHangmanGame::displayCorrectGuesses(){
@@ -66,32 +66,14 @@ void UIHangmanGame::displayLengthOfWord(){
 
 void UIHangmanGame::displayIfCorrect(string guess){
 
-    // if variable guess is longer than 1 we have a guess for the hole word
-    if (1 < guess.length()){
+    if (game->checkGuess(guess)){
 
-        // when a correct guess is made iterate through the word to make it guessed
-        if (guess == game->getWord()){
-
-            for (size_t i = 0; i < guess.length(); i++){
-
-                game->checkGuess(guess[i]);
-            }
-
-            cout << "Congratz you guessed the hole word in one word" << endl;
-        }
-
-        return;
-    }
-
-    // if guess is correct/wrong display the appropriate message
-    if (game->checkGuess(guess[0])){
-
-        cout << "Correct you got that one right" << endl << endl;
+        cout << "congratz you got that one right" << endl;
     }
 
     else{
 
-        cout << "Sorry, not the correct character" << endl << endl;
+        cout << "sorry not correct" << endl;
     }
 }
 

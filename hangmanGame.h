@@ -37,7 +37,7 @@ public:
     NodePtr getRoot() const;
 
     // function to verify if guess is correct
-    bool checkGuess(char checkChar);
+    bool checkGuess(string checkChar);
 
     // check if a character is already found(guessed)
     bool isItFound(char checkChar);
@@ -135,8 +135,13 @@ private:
     // read high score from database
     int readFromHighScoreDatabase();
 
+<<<<<<< HEAD
     // remove nodes from char list
     void removeCharList(NodePtr node);
+=======
+    // function to get rid of nodes in linked list
+    void removeNodes(NodePtr node);
+>>>>>>> de42dfc97b7cbab27129d2ac07224762674b23e6
 
 };
 

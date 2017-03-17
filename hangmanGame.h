@@ -135,6 +135,9 @@ private:
     // read high score from database
     int readFromHighScoreDatabase();
 
+    // function to get rid of nodes in linked list
+    void removeNodes(NodePtr node);
+
 };
 
 #endif // TTTGAME_H

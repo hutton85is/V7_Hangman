@@ -129,6 +129,12 @@ private:
     // Calculate total points during session
     void calculateTotalPoints();
 
+    // load points to high score database
+    void loadToHighScoreDatabase();
+
+    // read high score from database
+    int readFromHighScoreDatabase();
+
 };
 
 #endif // TTTGAME_H

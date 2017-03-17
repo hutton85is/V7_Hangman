@@ -2,7 +2,7 @@
 
 hangmanGame::hangmanGame(){
 
-    totalPoints = 0;
+    totalPoints = readFromHighScoreDatabase();
 
     lost = 0;
 
@@ -17,6 +17,7 @@ hangmanGame::hangmanGame(){
 
 hangmanGame::~hangmanGame()
 {
+    loadToHighScoreDatabase();
 
     loadToWordDatabase();
 
@@ -47,6 +48,28 @@ void hangmanGame::newGame(){
     wordToCharNode();
 
     alreadyCheckedWinnerLooser = false;
+}
+
+int hangmanGame::readFromHighScoreDatabase(){
+
+    string highscore;
+
+    ifstream myfile;
+    myfile.open("HighscoreDatabase.txt");
+
+    getline(myfile, highscore);
+
+    return atoi(highscore.c_str());
+}
+
+void hangmanGame::loadToHighScoreDatabase(){
+
+    ofstream myfile;
+    myfile.open ("HighscoreDatabase.txt");
+
+    myfile << totalPoints;
+
+    myfile.close();
 }
 
 void hangmanGame::loadToWordDatabase(){
@@ -92,12 +115,10 @@ void hangmanGame::removeWordFromDatabase(string rmWord){
 }
 
 
-/*
-Calculate only when a game is won. If a hole word is guessed in first try
-double points are given, then decrease points by 5*guesses made
-*/
+//Calculate only when a game is won
 void hangmanGame::calculatePoints(){
 
+    // when word is guessed without a faulty guess, give double points
     if (guesses == 0){
 
         points = points * 2;
@@ -107,6 +128,7 @@ void hangmanGame::calculatePoints(){
         return;
     }
 
+    // points are deducted as a multiple of ten of faulty guesses
     points = points - (10 * guesses);
 
     // set points as zero if they go negative

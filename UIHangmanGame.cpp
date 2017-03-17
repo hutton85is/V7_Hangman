@@ -132,7 +132,7 @@ void UIHangmanGame::displayGamePoints(){
 
     cout << "points for this game: " << game->getPoints() << endl;
 
-    cout << "points for this session: " << game->getTotalPoints() << endl << endl;
+    cout << "Total points: " << game->getTotalPoints() << endl << endl;
 }
 
 void UIHangmanGame::displayPlayMenu(){

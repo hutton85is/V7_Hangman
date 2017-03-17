@@ -1,6 +1,9 @@
 airplane
-paper
-green
 brown
-scissors
+drone
+green
 jeans
+paper
+quit
+scissors
+student

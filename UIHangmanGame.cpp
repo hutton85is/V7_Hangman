@@ -102,7 +102,7 @@ void UIHangmanGame::displayWinnerOrLooser(){
     }
 
     cout << "The word is: ";
-    cout << game->getWord() << endl;
+    cout << game->getWord() << endl << endl;
 }
 
 void UIHangmanGame::displayGamesStatus(){
@@ -111,7 +111,7 @@ void UIHangmanGame::displayGamesStatus(){
 
     cout << "games won: " << game->getWon() << endl;
 
-    cout << "games lost: " << game->getLost() << endl << endl << endl;
+    cout << "games lost: " << game->getLost() << endl << endl;
 }
 
 void UIHangmanGame::displayGuessesLeft(){
@@ -125,7 +125,7 @@ void UIHangmanGame::displayGamePoints(){
 
     cout << "points for this game: " << game->getPoints() << endl;
 
-    cout << "points for this session: " << game->getTotalPoints() << endl;
+    cout << "points for this session: " << game->getTotalPoints() << endl << endl;
 }
 
 void UIHangmanGame::displayPlayMenu(){
@@ -173,7 +173,7 @@ void UIHangmanGame::gotoAction(char choose){
 void UIHangmanGame::addWord(){
 
     string addWord;
-    cout << "Enter the word you would like to add: " << endl;
+    cout << "Enter the word you would like to add: ";
     cin >> addWord;
     game->addWordToDatabase(addWord);
     cout << endl << endl;
@@ -181,7 +181,7 @@ void UIHangmanGame::addWord(){
 
 void UIHangmanGame::removeWord(){
     string rmWord;
-    cout << "Enter the word you would like to remove: " << endl;
+    cout << "Enter the word you would like to remove: ";
     cin >> rmWord;
     game->removeWordFromDatabase(rmWord);
     cout << endl << endl;

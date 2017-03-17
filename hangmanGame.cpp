@@ -98,7 +98,7 @@ void hangmanGame::calculatePoints(){
         return;
     }
 
-    points = points - (5 * guesses);
+    points = points - (10 * guesses);
 
     // set points as zero if they go negative
     if (points < 0){

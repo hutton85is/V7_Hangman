@@ -9,7 +9,7 @@ UIHangmanGame::UIHangmanGame(){
 
 UIHangmanGame::~UIHangmanGame(){
 
-    game->~hangmanGame();
+    delete game;
 }
 
 void UIHangmanGame::displayCorrectGuesses(){
